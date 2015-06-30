@@ -1,0 +1,39 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "21.0.2"
+
+    defaultConfig {
+        applicationId "com.cluttereddesk.spotifystreamer"
+        minSdkVersion 17
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+
+repositories {
+    mavenCentral()
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    //this lib appears to be a negative value add, please consider removing it from the rubric
+    compile(name:'spotify-web-api-android-0.1.0', ext:'aar')
+    compile 'com.android.support:appcompat-v7:22.0.0'
+    compile group:'com.squareup.picasso', name:'picasso', version:'2.5.2'
+    compile 'com.squareup.retrofit:retrofit:1.9.0'  // Uses this to create RESTful Requests
+    compile 'com.squareup.okhttp:okhttp:2.2.0'  // Uses this to create HTTP connections
+    compile 'com.squareup.okhttp:okhttp-urlconnection:2.2.0'  // Uses this to create HTTP connections
+}
